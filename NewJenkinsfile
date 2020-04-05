@@ -21,5 +21,12 @@
                sh 'mvn compile'
                }
              }
-         }  
+          stage("Deploy to QA") {
+             agent any
+             steps {
+               sh 'mvn package'
+               
+               }
+             }
+       }  
    }
