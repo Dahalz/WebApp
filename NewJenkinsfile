@@ -9,9 +9,10 @@
           stage("Source code analysis") {
             agent any
             steps {
-             withSonarQubeEnv('sonarqube') {
+             withSonarQubeEnv('sonar') {
                sh 'mvn compile sonar:sonar -Dsonar.host.url=http://18.217.60.35:9000/ -Dsonar.sources=. -Dsonar.tests=. -Dsonar.test.inclusions=**/test/java/servlet/createpage_junit.java -Dsonar.exclusions=**/test/java/servlet/createpage_junit.java -Dsonar.login=admin -Dsonar.password=admin'
              }
+             
             }
           }
           stage("Maven build") {
@@ -20,9 +21,12 @@
                sh 'mvn compile'
                }
              }
-            
-        
-       
-          }
-       }
-
+          stage("Deploy to QA") {
+          agent any
+            steps {
+                     sh 'mvn package'
+                     sh "deploy adapters: [tomcat7(credentialsId: 'tomcat', path: '', url: 'http://18.191.153.44:8080/')], contextPath: '/QAWebapp', war: '**/*.war'"
+                  }
+             }
+       }  
+      } 
