@@ -22,11 +22,11 @@
                }
              }
           stage("Deploy to QA") {
-          agent any
-            steps {
-                     sh 'mvn package'
-                     sh "deploy adapters: [tomcat7(credentialsId: 'tomcat', path: '', url: 'http://18.191.153.44:8080/')], contextPath: '/QAWebapp', war: '**/*.war'"
-                  }
+             agent any
+             steps {
+               sh 'mvn package'
+               sh "deploy adapters: [tomcat7(credentialsId: 'tomcat', path: '', url: 'http://18.191.153.44:8080/')], contextPath: '/QAWebapp', war: '**/*.war'"
+               }
              }
        }  
       } 
