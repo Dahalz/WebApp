@@ -31,7 +31,7 @@
           stage("Deploy to QA") {
              agent any
              steps {
-               sh 'deploy adapters: [tomcat8(path: '/opt/tomcat/', url: 'http://18.191.153.44:8080/')], contextPath: 'QAwebApps', war: '','
+               sh 'deploy adapters: [tomcat8(path: '/opt/tomcat/', url: 'http://18.191.153.44:8080/')], contextPath: 'QAwebApps', war: '''
                    }
              }
            
