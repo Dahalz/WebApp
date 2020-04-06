@@ -33,7 +33,7 @@
              steps {
              
                    scripts{
-               def server deploy adapters: [tomcat8(path: '/opt/tomcat/webapps/', url: 'http://18.191.153.44:8080/')], contextPath: '/QAwebApps', war: '**/*.war'
+                      deploy adapters: [tomcat8(path: '/opt/tomcat/webapps/', url: 'http://18.191.153.44:8080/')], contextPath: '/QAwebApps', war: '**/*.war'
                    }
              }
            
