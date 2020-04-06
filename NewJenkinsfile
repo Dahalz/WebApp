@@ -25,7 +25,7 @@
              agent any
              steps {
                sh 'mvn package'
-               sh "deploy adapters: [tomcat8(path: '', url: 'http://18.191.153.44:8080/')], contextPath: 'QAWebapp', war: '*.war'"
+               sh 'deploy adapters: [tomcat8(path: '', url: 'http://18.191.153.44:8080/')], contextPath: 'QAWebapp', war: '*.war''
                }
              }
              stage("QA to PROD") {
